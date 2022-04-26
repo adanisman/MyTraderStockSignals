@@ -1,0 +1,138 @@
+<div>
+    <style scoped="">
+        .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background: rgb(28, 184, 65);
+            /* this is a green */
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60);
+            /* this is a maroon */
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20);
+            /* this is an orange */
+        }
+
+        .button-secondary {
+            background: rgb(66, 184, 221);
+            /* this is a light blue */
+        }
+ .content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+  
+    </style>
+    
+
+ 
+ <table class="content-table">
+        <tr>
+            <th><a href="http://localhost:5000/download?source=nasdaq" target="_blank"> <button class="button-success pure-button">Download Daily Data</button> </a></th>
+             <th><a href="http://localhost:5000/downloadWeekly?source=nasdaq" target="_blank"> <button class="button-success pure-button">Download Weekly Data</button> </a></th>
+            <th> <a href="http://localhost:5000/volume?source=nasdaq" target="_blank"> <button class="button-error pure-button">VOL INCREASES Buy Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/ottBuy?source=nasdaq" target="_blank"> <button class="button-error pure-button">OTT Buy Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/ottSell?source=nasdaq" target="_blank"> <button class="button-error pure-button">OTT Sell Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/sma10?source=nasdaq" target="_blank"> <button class="button-error pure-button">10 GUN USTU</button></a></th>
+            <th> <a href="http://localhost:5000/sma200?source=nasdaq" target="_blank"> <button class="button-error pure-button">200 GUN USTU</button></a></th>
+     </tr> <tr>
+            <th> <a href="http://localhost:5000/wtcross?source=nasdaq" target="_blank"> <button class="button-error pure-button">WT_CROSS</button></a></th>
+            <th> <a href="http://localhost:5000/wtcross?source=bist" target="_blank"> <button class="button-error pure-button">WT_CROSS BIST</button></a></th>
+            <th> <a href="http://localhost:5000/breaking?source=nasdaq" target="_blank"> <button class="button-error pure-button">Breaking Stocks</button></a></th>
+            <th><a href="http://localhost:5000/slope?source=nasdaq" target="_blank"> <button class="button-warning pure-button">Slope Stocks</button></a></th>
+            <th><a href="http://localhost:5000/rsi?source=nasdaq" target="_blank"> <button class="button-secondary pure-button">RSI Buy Stocks</button></a></th>
+            <th><a href="http://localhost:5000/ttm_squeeze?source=nasdaq" target="_blank"> <button class="button-secondary pure-button">TTM_Squeeze Stocks</button></a></th>
+     </tr> <tr>
+            <th><a href="http://localhost:5000/tke?source=nasdaq" target="_blank"> <button class="button-secondary pure-button">TKE Buy Stocks</button></a></th>
+            <th><a href="http://localhost:5000/macd?source=nasdaq" target="_blank"> <button class="button-secondary pure-button">MACD Buy Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/holy?source=nasdaq" target="_blank"> <button class="button-error pure-button">Holy Grail Setup Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/powerfull?source=nasdaq" target="_blank"> <button class="button-success pure-button">Powerfull Stocks</button></a></th>
+            <th> <a href="http://localhost:5000/renko?source=nasdaq" target="_blank"> <button class="button-success pure-button">RENKO BUY Signals</button></a></th>
+            <th> <a href="http://localhost:5000/emacross?source=nasdaq" target="_blank"> <button class="button-success pure-button">SMACROSS(10-21)BUY Signals</button></a></th>
+            <th> <a href="http://localhost:5000/emacross49?source=nasdaq" target="_blank"> <button class="button-success pure-button">WMACROSS(9-30)BUY Signals</button></a></th>
+            <th> <a href="http://localhost:5000/bounceFromDip?source=nasdaq" target="_blank"> <button class="button-success pure-button">BOUNCE FROM DIP</button></a></th>
+     </tr>
+ <tr>
+            <th> <a href="http://localhost:5000/sellFromTop?source=nasdaq" target="_blank"> <button class="button-success pure-button">SELL FROM TOP</button></a></th>
+ </tr>
+ 
+ <tr>
+            <th> <a href="http://localhost:5000/weeklyBuy?source=nasdaq" target="_blank"> <button class="button-success pure-button">WEEKLY BUY NASDAQ</button></a></th>
+ </tr> 
+  <tr>
+            <th> <a href="http://localhost:5000/weeklyBuy?source=bist" target="_blank"> <button class="button-success pure-button">WEEKLY BUY BIST</button></a></th>
+ </tr> 
+ <!--       
+ <tr>
+            <th><a href="http://localhost:5000/snapshot?source=nasdaq_small" target="_blank"> <button class="button-success pure-button">Download  SmallCap Data</button> </a></th>
+            <th> <a href="http://localhost:5000/breaking?source=nasdaq_small" target="_blank"> <button class="button-error pure-button">Breaking SmallCap Stocks</button></a></th>
+            <th><a href="http://localhost:5000/slope?source=nasdaq_small" target="_blank"> <button class="button-warning pure-button">Slope SmallCap Stocks</button></a></th>
+            <th><a href="http://localhost:5000/rsi?source=nasdaq_small" target="_blank"> <button class="button-secondary pure-button">RSI Buy Stocks</button></a></th>
+            <th><a href="http://localhost:5000/ttm_squeeze?source=nasdaq_small" target="_blank"> <button class="button-secondary pure-button">TTM_Squeeze SmallCap Stocks</button></a></th>
+            <th><a href="http://localhost:5000/tke?source=nasdaq_small" target="_blank"> <button class="button-secondary pure-button">TKE Buy SmallCap Stocks</button></a></th>
+        </tr>
+
+        <tr>
+            <th><a href="http://localhost:5000/takas" target="_blank"> <button class="button-success pure-button">BIST - Y-TAKAS</button> </a></th>
+            <th><a href="http://localhost:5000/snapshot?source=bist" target="_blank"> <button class="button-success pure-button">BIST - Download Data</button> </a></th>
+            <th> <a href="http://localhost:5000/breaking?source=bist" target="_blank"> <button class="button-error pure-button">BIST - Breaking Stocks</button></a></th>
+            <th><a href="http://localhost:5000/slope?source=bist" target="_blank"> <button class="button-warning pure-button">BIST - Slope Stocks</button></a></th>
+            <th><a href="http://localhost:5000/rsi?source=bist" target="_blank"> <button class="button-secondary pure-button">BIST- RSI Buy Stocks</button></a></th>
+            <th><a href="http://localhost:5000/ttm_squeeze?source=bist" target="_blank"> <button class="button-secondary pure-button">BIST - TTM_Squeeze Stocks</button></a></th>
+            <th><a href="http://localhost:5000/tke?source=bist" target="_blank"> <button class="button-secondary pure-button">BIST - TKE Buy Stocks</button></a></th>
+            <th><a href="http://localhost:5000/macd?source=bist" target="_blank"> <button class="button-secondary pure-button">BIST MACD Buy Stocks</button></a></th>
+
+        </tr>
+-->
+    </table>
+    
+ 
+    
+
+</div>
