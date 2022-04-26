@@ -10,8 +10,8 @@ def connect():
         con = psycopg2.connect(
                         host="ec2-3-229-252-6.compute-1.amazonaws.com",
                         database="d2oesls1sroim3",
-                        user="usorejrzywbkzj",
-                        password="e99d35ae8aec135d8be184b24346ffbcd178ef2769c02b798bafce7be9e3e417")
+                        user="xxxxxxxxxxxxxx",
+                        password="xxxxxxxxxxxxx")
         con.set_client_encoding('UTF8')
         return con
     except (Exception, psycopg2.DatabaseError) as error:
