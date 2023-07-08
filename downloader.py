@@ -1,6 +1,54 @@
 import csv
 import yfinance as yf
 
+def downloadUS():
+    source  = 'nasdaq'
+    ticker_list = []
+    with open('/Users/admin/dev/MyTraderStockSignals/datasets/'+source+'.csv', 'r') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            if row[0]:
+                ticker_list.append(row[0])
+      
+    data = yf.download(
+            tickers = ticker_list,
+            period='70d',
+            interval = "1d",
+            group_by = 'ticker',
+            auto_adjust = True,
+            prepost = True,
+            threads = False,
+            proxy = None
+        )
+    data.dropna()
+    data = data.T
+    for ticker in ticker_list:
+        data.loc[(ticker,),].T.dropna().to_csv('/Users/admin/dev/MyTraderStockSignals/hist/nasdaq/daily/'+ ticker + '.csv', sep=',', encoding='utf-8')
+
+def downloadBIST():
+    source  = 'bist'
+    ticker_list = []
+    with open('C:/stock/datasets/'+source+'.csv', 'r') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',')
+        for row in reader:
+            if row[0]:
+                ticker_list.append(row[0])
+      
+    data = yf.download(
+            tickers = ticker_list,
+            period='70d',
+            interval = "1d",
+            group_by = 'ticker',
+            auto_adjust = True,
+            prepost = True,
+            threads = False,
+            proxy = None
+        )
+    data.dropna()
+    data = data.T
+    for ticker in ticker_list:
+        data.loc[(ticker,),].T.dropna().to_csv('C:/stock/datasets/bist/daily/'+ ticker + '.csv', sep=',', encoding='utf-8')
+
 
 def downloadBIST():
     source  = 'bist'
