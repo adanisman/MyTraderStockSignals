@@ -1,7 +1,6 @@
 import csv
 import pandas
 import technicalLib as clib
-import dbService
 import traceback
 import datetime as dt
 import time
@@ -17,24 +16,24 @@ def ALL_BIST(num,datetimeObjStr):
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    source  = 'bist'+num
+    source  = 'nasdaq.csv0'+num
     i=0
     print(num,"-", i)
     nest_asyncio.apply()      
     stocks = {}
-    with open('C:/stock/datasets/'+source+'.csv') as f:
+    with open('/Users/admin/dev/MyTraderStockSignals/datasets/nasdaq.csv') as f:
         for row in csv.reader(f):
-            #print(row[1])
+            # print(row[1])
             stocks[row[0]] = row[1]
     
-    with open('C:/stock/datasets/'+source+'.csv') as f:
+    with open('/Users/admin/dev/MyTraderStockSignals/datasets/'+source) as f:
         for line in f:
             if "," not in line:
                 continue
             symbol = line.split(",")[0]
             symbol_org=symbol
             try: 
-                df = pandas.read_csv('C:/stock/datasets/bist/daily/'+symbol +'.csv') 
+                df = pandas.read_csv('/Users/admin/dev/MyTraderStockSignals/hist/nasdaq/daily/'+symbol +'.csv') 
                         
                 ottx = clib.OTT_NEW(df) 
                 last_ott = ottx[0][-1:].values[0]
@@ -46,17 +45,17 @@ def ALL_BIST(num,datetimeObjStr):
                         #sendTextBist("OTT BUY->" + " https://www.tradingview.com/chart/?symbol=BIST:" + symbol.replace('.IS', '') +"&interval=1D" ) 
                         #result_stocks[symbol]['symbol_org'] ="https://www.tradingview.com/chart/?symbol=BIST:" + symbol_org
                         company=stocks.get(symbol_org)                       
-                        print(company)
-                        dbService.insert_stock_signal(symbol_org.replace('.IS', ''),company,'OTTBUY','BIST','BUY',symbol_org.replace('.IS', ''),'DAILY')
+                        print("OTT BUY => " + symbol_org + ":" +company)
+                        #dbService.insert_stock_signal(symbol_org.replace('.IS', ''),company,'OTTBUY','BIST','BUY',symbol_org.replace('.IS', ''),'DAILY')
                        
                         
                 if clib.rsi(df):
                         company=stocks.get(symbol_org)                       
-                        print(company)
-                        dbService.insert_stock_signal(symbol_org.replace('.IS', ''),company,'RSIBUY','BIST','BUY',symbol_org.replace('.IS', ''),'DAILY')
+                        print("RSI BUY => " + symbol_org + ":" +company)
+                        #dbService.insert_stock_signal(symbol_org.replace('.IS', ''),company,'RSIBUY','BIST','BUY',symbol_org.replace('.IS', ''),'DAILY')
                         
             except:
-                traceback.print_exc()
+                #traceback.print_exc()
                 pass
             
 
@@ -67,13 +66,13 @@ def all_bist():
 
     result_stocks = {}
     #print(source)       
-    dbService.delete_pattern('OTTBUY')  
-    dbService.delete_pattern('RSIBUY')
+    #dbService.delete_pattern('OTTBUY')  
+    #dbService.delete_pattern('RSIBUY')
     start = time.time()
     datetimeObj = dt.date.today()
     datetimeObjStr = datetimeObj.strftime("%Y%m%d")
     
-     
+    t0 = threading.Thread(target=ALL_BIST, args=('0', datetimeObjStr,)) 
     t1 = threading.Thread(target=ALL_BIST, args=('1', datetimeObjStr,))
     t2 = threading.Thread(target=ALL_BIST, args=('2', datetimeObjStr,))
     t3 = threading.Thread(target=ALL_BIST, args=('3', datetimeObjStr,))
@@ -83,7 +82,7 @@ def all_bist():
     t7 = threading.Thread(target=ALL_BIST, args=('7', datetimeObjStr,))
     t8 = threading.Thread(target=ALL_BIST, args=('8', datetimeObjStr,))
     t9 = threading.Thread(target=ALL_BIST, args=('9', datetimeObjStr,)) 
-    t10 = threading.Thread(target=ALL_BIST, args=('10', datetimeObjStr,))
+
             
     # starting thread 1
     t1.start()
@@ -95,7 +94,7 @@ def all_bist():
     t7.start()
     t8.start() 
     t9.start() 
-    t10.start() 
+    t0.start() 
        
     t1.join()
     t2.join()
@@ -106,7 +105,7 @@ def all_bist():
     t7.join()
     t8.join()    
     t9.join()  
-    t10.join()   
+    t0.join()   
     # both threads completely executed
     print("Done!")
     print("--- %s seconds ---" % (time.time() - start))
